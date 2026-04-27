@@ -1,0 +1,58 @@
+# --- CALCULADORA FLEXDOT v1.0 | Mr.S Edition ---
+clear
+ui:color(cyan)
+show(================================)
+show(   CALCULADORA OFICIAL FLEXDOT  )
+show(================================)
+ui:color(reset)
+
+# 1. ENTRADA DE DATOS
+show(Introduce el primer numero:)
+input(n1)
+
+show(Introduce el segundo numero:)
+input(n2)
+
+show(Elige operacion: 1-Suma | 2-Resta | 3-Multi | 4-Div)
+input(op)
+
+# 2. LÓGICA DE OPERACIONES
+check op == 1:
+  res : n1 + n2
+  simbolo : +
+next op == 2:
+  res : n1 - n2
+  simbolo : -
+next op == 3:
+  res : n1 * n2
+  simbolo : *
+next op == 4:
+  res : n1 / n2
+  simbolo : /
+fail:
+  ui:color(rojo)
+  show(Error: Operacion no valida)
+  wait(2)
+end
+
+# 3. MOSTRAR RESULTADO
+ui:color(verde)
+show(--------------------------------)
+show(Resultado de n1 simbolo n2 es:)
+show(res)
+show(--------------------------------)
+
+# 4. GUARDAR HISTORIAL (Opcional v2.0)
+show(¿Quieres exportar este resultado? 1:Si | 2:No)
+input(guardar)
+
+check guardar == 1:
+  file:save(ultima_operacion)
+  show(Archivo 'ultima_operacion.txt' creado.)
+fail:
+  show(Saliendo sin guardar...)
+end
+
+ui:color(reset)
+wait(2)
+show(Gracias por usar FlexDot Engine.)
