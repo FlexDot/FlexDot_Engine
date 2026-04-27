@@ -1,0 +1,150 @@
+DOCUMENTACIÓN OFICIAL: FLEXDOT v1.0
+​Autor:(Mr.S y Geminis.IA)
+Plataforma: Pydroid 3 / Python 3.x
+Estado: Estable (75% completado)
+​1. Fundamentos del Lenguaje
+​FlexDot es un lenguaje interpretado basado en Python, 
+diseñado para ser ligero, lógico y fácil de leer. Los 
+archivos de código deben tener la extensión .fd.
+​Reglas de Oro:
+​Indentación (Sangría): Los bloques dentro de un check, 
+next, fail o loop DEBEN tener 2 espacios de sangría para 
+que el motor sepa que pertenecen a esa función.
+​Comentarios: Cualquier línea que empiece con # será
+ ignorada por el motor.
+​2. Gestión de Variables y Matemáticas
+​FlexDot utiliza el operador : para asignar valores y realizar
+ cálculos.
+​Sintaxis:
+​nombre_variable : valor_o_operacion:
+
+Acción                              Ejemplo en FlexDot
+Asignar Texto                   nombre : Mr.S
+Asignar Número.              edad : 14
+Matemáticas puntos :     puntos + 10
+Booleanos activo :            true
+
+​Nota v0.8a: El motor detecta automáticamente si una 
+operación es matemática o simple texto.
+​3. Comandos de Entrada y Salida (I/O)
+​show(contenido)
+​Muestra texto o variables en la consola.
+​Auto-Detección: Si escribes el nombre de una variable 
+dentro de los paréntesis, FlexDot mostrará su valor.
+​Ejemplo: show(Hola nombre tienes puntos puntos)
+​input(nombre_variable)
+​Detiene el programa y espera a que el usuario escriba 
+algo. El resultado se guarda en la variable indicada.
+​Ejemplo: input(respuesta)
+​clear
+​Limpia toda la terminal para que el programa se vea 
+ordenado. No usa paréntesis.
+​wait(segundos)
+​Pausa la ejecución durante el tiempo indicado. Puede 
+usar números o variables.
+​Ejemplo: wait(1.5) o wait(velocidad)
+​4. Lógica de Control (Condicionales)
+​Permite que el programa tome decisiones.
+
+Comando                                      Función
+check [condición]:             Evalúa si algo es verdad. 
+                                             Siempre va primero.
+next [condición]:                
+                                             (Equivalente a elif). Solo se 
+                                              activa si el check anterior falló.
+fail: (Equivalente a else).  
+                                              se activa si ninguna de las 
+                                              anteriores fue verdad.
+ejemplo:
+
+check vidas == 0:
+  show(Game Over)
+next vidas < 3:
+  show(Cuidado, te quedan pocas vidas)
+fail:
+  show(Sigues en la pelea)
+
+5. Bucles de Repetición (Loops)
+​Repite un bloque de código mientras una condición
+ sea verdadera.
+​loop [condición]: ... endloop
+​Funcionamiento: Evalúa la condición al inicio. Si es verdad,
+ ejecuta todo hasta encontrar el endloop y vuelve a subir.
+​Ejemplo:
+
+contador : 1
+loop contador <= 5:
+  show(Vuelta numero contador)
+  contador : contador + 1
+endloop
+
+6. Comandos de Sistema
+​version-changes
+​Muestra el historial de crédito, los cambios de cada versión y
+ el estado actual del desarrollo liderado por Mr.S Y Geminis.
+
+Operador      Significado
+==                    Igual a
+!=                     Diferente de
+> / <                Mayor que / Menor que
+=>                    Mayor o igual que
++ - * /              Suma, Resta, Multiplicación, División
+
+CONSEJO DE MR.S: Siempre usa clear al inicio de tus
+ programas para que la experiencia del usuario sea de nivel 
+profesional.
+
+​7. Motor de Datos: Listas (Core)
+​Ahora puedes agrupar múltiples valores en una sola variable.
+​Sintaxis A: <nombre: item1, item2>
+​Sintaxis B: nombre: (item1, item2)
+​Mostrar: Usa s.nombre dentro de un show() para ver el contenido 
+completo.
+​8. Extensión de Usuario (ui:)
+​ui:loading(variable): Dibuja una barra de carga dinámica [████......] 
+basada en un número (0-100).
+​ui:color(nombre): Cambia el color del texto (rojo, verde, amarillo, azul, 
+magenta, cyan, blanco, reset).
+​ui:pos(x, y): Coloca el cursor en una coordenada exacta de la pantalla.
+​9. Extensión de Utilidad (util:)
+​util:random(min, max) -> variable: Genera un número al azar y lo guarda.
+​util:chance(porcentaje) -> variable: Define si una acción tiene éxito (true) o 
+falla (false) según la probabilidad.
+​10. Extensión de Audio (sound:)
+​sound:beep: Lanza un pitido de alerta del sistema.
+
+​Esta actualización permite que FlexDot escriba y lea archivos reales en 
+la memoria del dispositivo, permitiendo guardar progresos, configuraciones 
+o bases de datos.
+​
+11. Guardar Datos: file:save(nombre)
+
+​Crea un archivo de texto con toda la información que existe en la memoria actual del
+programa.Formato: Genera un archivo .txt compatible con cualquier editor de notas.
+​Estructura interna: Utiliza el estándar JSON (llaves y etiquetas) para mantener el orden.
+​Ejemplo: file:save(mi_progreso) -> Crea el archivo mi_progreso.txt.
+​
+12. Cargar Datos: file:load(nombre)
+
+​Busca un archivo guardado previamente y restaura todas las variables y listas a la 
+memoria del motor. Uso: Ideal para continuar partidas o cargar perfiles de usuario
+al iniciar un script. Ejemplo: file:load(mi_progreso) -> Recupera oro, nivel, nombre e 
+inventario. ¿Cómo se ven los datos guardados? (Ejemplo Técnico)
+​
+Si en tu código tienes:
+fuerza: 50
+<items: pocion, escudo>
+​
+Al usar file:save(test), el archivo test.txt guardará esto:
+
+{
+    "fuerza": 50,
+    "items": ["pocion", "escudo"]
+}
+NOTA PARA EL DESARROLLADOR (Mr.S):
+​Ubicación: Los archivos se guardan en la misma carpeta donde está tu Main.py.
+​Compatibilidad: Los archivos .txt generados pueden abrirse en PC, VS Code o 
+cualquier navegador web porque usan el estándar de JavaScript.
+
+estándar de JavaScript.
+
