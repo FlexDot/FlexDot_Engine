@@ -1,0 +1,75 @@
+​DOCUMENTATION OFFICIAL: FLEXDOT v1.0
+Author: (Mr.S & Gemini AI)
+Platform: Pydroid 3 / Python 3.x
+Status: Stable (75% completed)
+​Language Fundamentals
+FlexDot is a Python-based interpreted language designed to be lightweight, logical, and easy to read. Source files must use the .fd extension.
+​Golden Rules:
+Indentation: Blocks inside a check, next, fail, or loop MUST have a 2-space indent so the engine knows they belong to that function.
+Comments: Any line starting with # will be ignored by the engine.
+​Variable Management & Math
+FlexDot uses the : operator to assign values and perform calculations.
+Syntax: variable_name : value_or_operation
+​Examples:
+Assign Text -> name : Mr.S
+Assign Number -> age : 14
+Math Operations -> points : points + 10
+Booleans -> active : true
+​Note v0.8a: The engine automatically detects if an operation is mathematical or simple text.
+​Input/Output Commands (I/O)
+show(content): Displays text or variables in the console.
+Auto-Detection: If you write a variable name inside the parentheses, FlexDot will display its value.
+Example: show(Hello name you have points points)
+​input(variable_name): Stops the program and waits for user input. The result is saved in the specified variable.
+Example: input(answer)
+​clear: Clears the terminal for a clean UI. (Does not use parentheses).
+​wait(seconds): Pauses execution. Can use numbers or variables.
+Example: wait(1.5) or wait(speed)
+​Control Logic (Conditionals)
+Allows the program to make decisions.
+​check [condition]: Evaluates if something is true. Always goes first.
+next [condition]: (Equivalent to elif). Only triggers if the previous check failed.
+fail: (Equivalent to else). Triggers if none of the above were true.
+​Example:
+check lives == 0:
+show(Game Over)
+next lives < 3:
+show(Be careful, few lives left)
+fail:
+show(Still in the fight)
+​Repetition Blocks (Loops)
+Repeats a block of code as long as a condition is true.
+loop [condition]: ... endloop
+​Example:
+counter : 1
+loop counter <= 5:
+show(Round number counter)
+counter : counter + 1
+endloop
+​System Commands
+version-changes: Displays credit history, version updates, and current development status led by Mr.S and Gemini AI.
+​Operators:
+== (Equal to)
+!= (Different from)
+​/ < (Greater/Less than)
+=> (Greater or equal)
+​/ (Math operations)
+​Data Engine: Lists (Core)
+Group multiple values into a single variable.
+Syntax A: <name: item1, item2>
+Syntax B: name: (item1, item2)
+Display: Use s.name inside a show() to see the full content.
+​User Extension (ui:)
+ui:loading(variable): Draws a dynamic loading bar [████......] based on a number (0-100).
+ui:color(name): Changes text color (red, green, yellow, blue, magenta, cyan, white, reset).
+ui:pos(x, y): Places the cursor at an exact screen coordinate.
+​Utility Extension (util:)
+util:random(min, max) -> variable: Generates a random number and saves it.
+util:chance(percentage) -> variable: Returns true or false based on probability.
+​Audio Extension (sound:)
+sound:beep: Triggers a system alert beep.
+​Data Persistence (File System)
+file:save(name): Creates a .txt file (JSON format) with all current memory data.
+file:load(name): Restores all variables and lists from a saved file.
+​Example: file:save(my_progress) saves your data in a format compatible with PC and web browsers.
+​MR.S ADVICE: Always use clear at the start of your programs for a professional user experience.
